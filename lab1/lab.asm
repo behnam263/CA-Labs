@@ -442,11 +442,11 @@ firstline_cypher:
                 jmp assignend_cypher
                 
 firstline_cypher_end_sz:
-                sub dl,"z"-"a" 
+                sub dl,"z"-"A" 
                 dec dl
                 jmp assignend_cypher
 firstline_cypher_end_bz:
-                sub dl,"Z" -"A"
+                sub dl,"Z" -"a"
                 dec dl  
                 jmp assignend_cypher                             
                 
@@ -463,11 +463,11 @@ secondline_cypher:
                 jmp assignend_cypher  
                 
 secondline_cypher_end_sz:
-                sub dl,"z" -"a" 
+                sub dl,"z" -"A" 
                 dec dl
                 jmp assignend_cypher
 secondline_cypher_end_bz:
-                sub dl,"Z" -"A" 
+                sub dl,"Z" -"a" 
                 dec dl  
                 jmp assignend_cypher                 
 
@@ -489,11 +489,11 @@ thirdline_cypher:
                 
                 
 thirdline_cypher_end_sz:
-                sub dl,"z"-"a"
+                sub dl,"z"-"A"
                 dec dl   
                 jmp assignend_cypher
 thirdline_cypher_end_bz:
-                sub dl,"Z"-"A" 
+                sub dl,"Z"-"a" 
                 dec dl  
                 jmp assignend_cypher 
  
@@ -520,11 +520,11 @@ forthline_cypher:
                 
                 
 forthline_cypher_end_sz:
-                sub dl,"z"-"a" 
+                sub dl,"z"-"A" 
                 dec dl
                 jmp assignend_cypher
 forthline_cypher_end_bz:
-                sub dl,"Z"-"A"  
+                sub dl,"Z"-"a"  
                 dec dl 
                 jmp assignend_cypher 
 

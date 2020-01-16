@@ -174,7 +174,7 @@ SVC_Handler     PROC
                 EXPORT  SVC_Handler               [WEAK]
 				;Test bit 2 of EXC_RETURN in LR
 SVC_dispatcher
-				PUSH    {LR}              ;  always save your LR
+			;	PUSH    {LR}              ;  always save your LR
 				tst lr,#0x4
 				ITE eq
 				MRSEQ r0,MSP
