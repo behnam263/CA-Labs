@@ -129,23 +129,23 @@ Reset_Handler   PROC
 				ldr r2,=0xC3159EAA
 				MOV R8,#0x0000FFFF
 				
-				AND R3,r1,R8
-				AND R4,r2,R8
-				sxth R3,R3
-				sxth R4,R4
-				MUL R5,R4,R3
-				ldr R8,=0xFFFF0000
-				AND R3,r1,R8
-				AND R4,r2,R8
-				lsr R3,#16
-				lsr R4,#16
-				sxth R3,R3
-				sxth R4,R4
-				MUL R6,R4,R3
+				AND R3,r1,R8  ; mask input registers
+				AND R4,r2,R8  ; mask input registers
+				sxth R3,R3	  ; Extend sign of masked input registers
+				sxth R4,R4	  ; Extend sign of masked input registers
+				MUL R5,R4,R3  ; Multiply two inputs
+				ldr R8,=0xFFFF0000 ; change mask to get second part of inputs
+				AND R3,r1,R8	; mask input registers
+				AND R4,r2,R8	; mask input registers
+				lsr R3,#16		; shift next part of masked input
+				lsr R4,#16		; shift next part of masked input
+				sxth R3,R3		; Extend sign of masked input registers 
+				sxth R4,R4		; Extend sign of masked input registers
+				MUL R6,R4,R3 	; Multiply the second part of two inputs		
 				
 				
-				add r7,r5,r6
-				sub r8,r5,r6
+				add r7,r5,r6	; add two multiplied parts
+				sub r8,r5,r6	; subtract two multiplied parts
 			 
                 ENDP
 

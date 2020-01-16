@@ -131,16 +131,16 @@ Reset_Handler   PROC
 				ldr r0,=0x7A30458D
 				ldr r1,=0xC3159EAA
 				ldr r3,=mySpace
-				STMIA r3, {r0, r1}
-				ldr r0,=0x00000000
-				ldr r1,=0x00000000
-				BL myUSAD8R
-				LDR r2, [r3]
+				STMIA r3, {r0, r1} ; saving input values in memory
+				ldr r0,=0x00000000 ; unset r0 to see the effect
+				ldr r1,=0x00000000 ; unset r1 to see the effect
+				BL myUSAD8R	; Jump to procedure
+				LDR r2, [r3] ; 
 				
 	
 stop 			b stop
 				
-
+ENDP
 					
 					
 myUSAD8R		proc
@@ -179,7 +179,7 @@ continuesub
 				bx lr	
 				endp
 					
-                ENDP
+                
 
 
 					

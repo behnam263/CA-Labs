@@ -103,12 +103,12 @@ __Vectors_Size  EQU      __Vectors_End - __Vectors
 
 Reset_Handler   PROC
                 EXPORT   Reset_Handler             [WEAK]
-				ldr R0 , =0x7A30458D
-				ldr R1 , =0xC3159EAA
-				UADD8 r4, r0, r1
-				USAD8 r5, r0, r1
-				SMUAD r6, r0, r1
-				SMUSD r7, r0, r1
+				ldr R0 , =0x7A30458D	; input 1
+				ldr R1 , =0xC3159EAA	; input 2
+				UADD8 r4, r0, r1	; Unsigned parallel byte-wise addition two inputs
+				USAD8 r5, r0, r1	; Unsigned parallel byte-wise subtraction two inputs
+				SMUAD r6, r0, r1	; Dual 16bit Signed Multiply with Addition of products
+				SMUSD r7, r0, r1	; Dual 16bit Signed Multiply with Subtraction of products
                 ENDP
 
 

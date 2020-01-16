@@ -207,23 +207,44 @@ ARM Macro Assembler    Page 4
   129 00000002 4A17            ldr              r2,=0xC3159EAA
   130 00000004 F64F 78FF       MOV              R8,#0x0000FFFF
   131 00000008         
-  132 00000008 EA01 0308       AND              R3,r1,R8
-  133 0000000C EA02 0408       AND              R4,r2,R8
-  134 00000010 B21B            sxth             R3,R3
-  135 00000012 B224            sxth             R4,R4
-  136 00000014 FB04 F503       MUL              R5,R4,R3
-  137 00000018 F8DF 8048       ldr              R8,=0xFFFF0000
-  138 0000001C EA01 0308       AND              R3,r1,R8
-  139 00000020 EA02 0408       AND              R4,r2,R8
-  140 00000024 EA4F 4313       lsr              R3,#16
-  141 00000028 EA4F 4414       lsr              R4,#16
-  142 0000002C B21B            sxth             R3,R3
-  143 0000002E B224            sxth             R4,R4
-  144 00000030 FB04 F603       MUL              R6,R4,R3
+  132 00000008 EA01 0308       AND              R3,r1,R8    ; mask input regist
+                                                            ers
+  133 0000000C EA02 0408       AND              R4,r2,R8    ; mask input regist
+                                                            ers
+  134 00000010 B21B            sxth             R3,R3       ; Extend sign of ma
+                                                            sked input register
+                                                            s
+  135 00000012 B224            sxth             R4,R4       ; Extend sign of ma
+                                                            sked input register
+                                                            s
+  136 00000014 FB04 F503       MUL              R5,R4,R3    ; Multiply two inpu
+                                                            ts
+  137 00000018 F8DF 8048       ldr              R8,=0xFFFF0000 ; change mask to
+                                                             get second part of
+                                                             inputs
+  138 0000001C EA01 0308       AND              R3,r1,R8    ; mask input regist
+                                                            ers
+  139 00000020 EA02 0408       AND              R4,r2,R8    ; mask input regist
+                                                            ers
+  140 00000024 EA4F 4313       lsr              R3,#16      ; shift next part o
+                                                            f masked input
+  141 00000028 EA4F 4414       lsr              R4,#16      ; shift next part o
+                                                            f masked input
+  142 0000002C B21B            sxth             R3,R3       ; Extend sign of ma
+                                                            sked input register
+                                                            s 
+  143 0000002E B224            sxth             R4,R4       ; Extend sign of ma
+                                                            sked input register
+                                                            s
+  144 00000030 FB04 F603       MUL              R6,R4,R3    ; Multiply the seco
+                                                            nd part of two inpu
+                                                            ts  
   145 00000034         
   146 00000034         
-  147 00000034 EB05 0706       add              r7,r5,r6
-  148 00000038 EBA5 0806       sub              r8,r5,r6
+  147 00000034 EB05 0706       add              r7,r5,r6    ; add two multiplie
+                                                            d parts
+  148 00000038 EBA5 0806       sub              r8,r5,r6    ; subtract two mult
+                                                            iplied parts
   149 0000003C         
   150 0000003C                 ENDP
   151 0000003C         
@@ -237,6 +258,12 @@ ARM Macro Assembler    Page 4
 ]
   157 0000003C E7FE            B                .
   158 0000003E                 ENDP
+
+
+
+ARM Macro Assembler    Page 5 
+
+
   160 0000003E         HardFault_Handler
                                PROC
   161 0000003E                 EXPORT           HardFault_Handler         [WEAK
@@ -258,12 +285,6 @@ ARM Macro Assembler    Page 4
   175 00000044         UsageFault_Handler
                                PROC
   176 00000044                 EXPORT           UsageFault_Handler        [WEAK
-
-
-
-ARM Macro Assembler    Page 5 
-
-
 ]
   177 00000044 E7FE            B                .
   178 00000046                 ENDP
@@ -302,6 +323,12 @@ ARM Macro Assembler    Page 5
   201 0000004E                 EXPORT           TIMER1_IRQHandler         [WEAK
 ]
   202 0000004E                 EXPORT           TIMER2_IRQHandler         [WEAK
+
+
+
+ARM Macro Assembler    Page 6 
+
+
 ]
   203 0000004E                 EXPORT           TIMER3_IRQHandler         [WEAK
 ]
@@ -323,12 +350,6 @@ ARM Macro Assembler    Page 5
 ]
   212 0000004E                 EXPORT           SPI_IRQHandler            [WEAK
 ]
-
-
-
-ARM Macro Assembler    Page 6 
-
-
   213 0000004E                 EXPORT           SSP0_IRQHandler           [WEAK
 ]
   214 0000004E                 EXPORT           SSP1_IRQHandler           [WEAK
@@ -367,6 +388,12 @@ ARM Macro Assembler    Page 6
 ]
   231 0000004E                 EXPORT           PLL1_IRQHandler           [WEAK
 ]
+
+
+
+ARM Macro Assembler    Page 7 
+
+
   232 0000004E                 EXPORT           USBActivity_IRQHandler    [WEAK
 ]
   233 0000004E                 EXPORT           CANActivity_IRQHandler    [WEAK
@@ -388,12 +415,6 @@ ARM Macro Assembler    Page 6
   248 0000004E         SPI_IRQHandler
   249 0000004E         SSP0_IRQHandler
   250 0000004E         SSP1_IRQHandler
-
-
-
-ARM Macro Assembler    Page 7 
-
-
   251 0000004E         PLL0_IRQHandler
   252 0000004E         RTC_IRQHandler
   253 0000004E         EINT0_IRQHandler
@@ -432,6 +453,12 @@ ARM Macro Assembler    Page 7
   292 00000050         
   293 00000050 4805            LDR              R0, =  Heap_Mem
   294 00000052 4906            LDR              R1, =(Stack_Mem + Stack_Size)
+
+
+
+ARM Macro Assembler    Page 8 
+
+
   295 00000054 4A04            LDR              R2, = (Heap_Mem +  Heap_Size)
   296 00000056 4B06            LDR              R3, = Stack_Mem
   297 00000058 4770            BX               LR
@@ -453,12 +480,6 @@ ork --depend=.\objects\startup_lpc17xx.d -o.\objects\startup_lpc17xx.o -I.\RTE\
 Device\LPC1768 -I.\RTE\_Target_1 -ID:\apps\Keil_v5\Arm\Packs\ARM\CMSIS\5.5.1\CM
 SIS\Core\Include -ID:\apps\Keil_v5\Arm\Packs\Keil\LPC1700_DFP\2.6.0\Device\Incl
 ude --predefine="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 528" --pred
-
-
-
-ARM Macro Assembler    Page 8 
-
-
 efine="_RTE_ SETA 1" --predefine="LPC175x_6x SETA 1" --list=.\listings\startup_
 lpc17xx.lst RTE\Device\LPC1768\startup_LPC17xx.s
 

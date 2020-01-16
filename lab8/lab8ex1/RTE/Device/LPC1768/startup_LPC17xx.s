@@ -129,7 +129,7 @@ Reset_Handler   PROC
 				ldr r0,=0x7A30458D
 				ldr r1,=0xC3159EAA
 				bl myUSAD8
-				; Result is in R3
+				; Result is in R0
 				
 
 stop 			b stop
@@ -151,7 +151,7 @@ loop
 				sub r7,#1	; count down to finish the loop
 				cmp r7,#0	; check for the loop counter
 				bne loop
-				mov r3,r6
+				mov r0,r6
 				pop {R4,R5,R6,r7,r8}
 				POP {PC}
 				bx lr		

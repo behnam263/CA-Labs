@@ -124,23 +124,7 @@ CRP_Key         DCD     0xFFFFFFFF
 
 Reset_Handler   PROC
                 EXPORT  Reset_Handler             [WEAK]
-				
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-				SVC 8
+				SVC 3
                 ENDP
 
 
@@ -175,12 +159,17 @@ SVC_Handler     PROC
 				;Test bit 2 of EXC_RETURN in LR
 SVC_dispatcher
 			;	PUSH    {LR}              ;  always save your LR
-				tst lr,#0x4
-				ITE eq
-				MRSEQ r0,MSP
-				MRSNE R0,PSP
-				LDR R1,[r0,#24]
-				LDRB R1,[r1,#-2]
+			
+				LDR R0,[sp,#24]
+				LDRB R1,[r0,#-4] 
+				bic r1,#0xff000000
+				lsr r1,#16
+				
+				;tst lr,#0x4
+				;ITE eq
+				;MRSEQ r0,MSP
+				;MRSNE R0,PSP
+				
 
 
 ;				MOV R8,#0x0000FFFF
@@ -209,8 +198,8 @@ SVC_dispatcher
 ;				mov r0, r7
 ;				TST LR, #0x8
 ;				IT EQ
-
-				pop {pc}
+                bx lr
+				;pop {pc}
                 B       .
                 ENDP
 DebugMon_Handler\
