@@ -4,7 +4,9 @@
 
 N EQU 4
 M EQU 7
-P EQU 5
+P EQU 5    
+Infpos EQU 32767
+Infneg EQU 8001h
 
 .MODEL samll
 .STACK
@@ -64,14 +66,18 @@ mov DI,BP           ; get the index of first place of the row in memory
 MOV DL,matB[DI][BX] ; get the memory block by summing first place of a row index and column index
 pop DI              ; roll back index 
 add BX,tempP        ; go to next row in second matrix 
+push dx
+push ax
 
-IMUL DL             ; multiply loaded cells in al and dl
+IMUL DL             ; multiply loaded cells in al and dl 
+call overflowcheck
 MOV SI,BP           ; mov index of next index in loop above (todo:check if adding one is enough)
 add si,si           ; 
 MOV BX,tempN        ;
 ADD matC[BX][SI],AX ;  
 
-
+pop ax
+pop dx
 
 push cx   
 mov cx,p            ;
@@ -220,6 +226,29 @@ printmsg proc  ;call I/O primitive interrupt
            ret
 printmsg  endp  
 
+overflowcheck proc
+            ;because we pushed values before multiply we can know the sign   
+             mov si,bx ;preserve bx 
+             pop bx ;save return address
+             jo overflow
+             jmp nooverflow 
+overflow:    
+             pop dx  
+             pop ax
+             xor ax,dx
+             and ax,80h
+             cmp ax,0
+             je samesign 
+             ;here comes not same signs
+             mov ax, Infneg
+             jmp  nooverflow
+             
+samesign:    mov ax, Infpos         
+nooverflow:  push bx ;bring back return address
+             mov bx,si  ; return previous bx value
+              ret
+    
+overflowcheck endp
 
 END
 
