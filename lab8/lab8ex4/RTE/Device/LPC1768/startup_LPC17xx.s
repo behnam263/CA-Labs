@@ -124,7 +124,12 @@ CRP_Key         DCD     0xFFFFFFFF
 
 Reset_Handler   PROC
                 EXPORT  Reset_Handler             [WEAK]
-				SVC 3
+				ldr r0,=0x7A30458D
+				ldr r1,=0xC3159EAA
+				
+				SVC #8
+				;result is in r0
+				
                 ENDP
 
 
@@ -158,46 +163,57 @@ SVC_Handler     PROC
                 EXPORT  SVC_Handler               [WEAK]
 				;Test bit 2 of EXC_RETURN in LR
 SVC_dispatcher
-			;	PUSH    {LR}              ;  always save your LR
-			
-				LDR R0,[sp,#24]
-				LDRB R1,[r0,#-4] 
-				bic r1,#0xff000000
-				lsr r1,#16
+				LDR lr,[sp,#24]
+				LDR r0,[lr,#-4]
+				bic r0,#0xff000000  ; unset the opcode
+				lsr r0,#16 ; get the immidiate value
 				
-				;tst lr,#0x4
-				;ITE eq
-				;MRSEQ r0,MSP
-				;MRSNE R0,PSP
+				LDR r1,[sp]
+				LDR r2,[sp,#4]
+		        cmp r0,#3
+				beq SMUADlabel
 				
+				cmp r0,#8
+				beq SMUSDlabel
+                B programend
+SMUADlabel
+				MOV R8,#0x0000FFFF
+				AND R3,r1,R8
+				AND R4,r2,R8
+				sxth R3,R3
+				sxth R4,R4
+				MUL R5,R4,R3
 
-
-;				MOV R8,#0x0000FFFF
-;				AND R3,r0,R8
-;				AND R4,r1,R8
-;				sxth R3,R3
-;				sxth R4,R4
-;				MUL R5,R4,R3
-
-;				ldr R8,=0xFFFF0000
-;				AND R3,r0,R8
-;				AND R4,r1,R8
-;				lsr R3,#16
-;				lsr R4,#16
-;				sxth R3,R3
-;				sxth R4,R4
-;				MUL R6,R4,R3
-;				
-;				
-;				add r7,r5,r6
-;				sub r8,r5,r6
+				ldr R8,=0xFFFF0000
+				AND R3,r0,R8
+				AND R4,r1,R8
+				lsr R3,#16
+				lsr R4,#16
+				sxth R3,R3
+				sxth R4,R4
+				MUL R6,R4,R3	
+				add r0,r5,r6
 				
 				
-;				TST LR, #0x3
-;				ITE EQ
-;				mov r0, r7
-;				TST LR, #0x8
-;				IT EQ
+SMUSDlabel
+				MOV R8,#0x0000FFFF
+				AND R3,r1,R8
+				AND R4,r2,R8
+				sxth R3,R3
+				sxth R4,R4
+				MUL R5,R4,R3
+
+				ldr R8,=0xFFFF0000
+				AND R3,r0,R8
+				AND R4,r1,R8
+				lsr R3,#16
+				lsr R4,#16
+				sxth R3,R3
+				sxth R4,R4
+				MUL R6,R4,R3
+				sub r0,r5,r6
+				
+programend
                 bx lr
 				;pop {pc}
                 B       .
