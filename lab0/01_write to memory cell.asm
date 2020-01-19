@@ -1,9 +1,0 @@
-.MODEL small
-.STACK
-.DATA
-VAR DW ?
-.CODE
-.STARTUP
-MOV VAR, 0
-.EXIT
-END

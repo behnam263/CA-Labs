@@ -1,0 +1,164 @@
+
+
+CMP (compare) substracts operand2 from
+Rd and updates the flags.
+CMN (compare negative) adds operand2
+from Rd and updates the flags.
+
+TST (test) computes the logical AND between
+operand2 and Rd; then updates all the flags
+except V.
+TEQ (test equivalence) computes the logical
+EOR between operand2 and Rd; then
+updates all the flags except V
+
+
+ADD <Rd>,<Rn>,<op2> Rd = Rn + op2
+ADC <Rd>,<Rn>,<op2>
+Rd = Rn + op2 + C
+
+ADDW is like ADD, but it takes only a 12-bit
+value and it can not update flags
+RSB <Rd>,<Rn>,<op2> Rd = op2 - Rn
+
+
+LSL <Rd>, <Rn>, <op2>
+LSR <Rd>, <Rn>, <op2>
+ASR <Rd>, <Rn>, <op2> repeats sign bit
+
+ROR <Rd>, <Rn>, <op2> moves first bit to most significant bit and copy it to carry
+RRX <Rd>, <Rn> moves first bit to carry and move carry to most significant bit 
+
+unsigned division
+UDIV <Rd>, <Rn>, <Rm>
+signed division
+SDIV <Rd>, <Rn>, <Rm>
+If Rn is not exactly divisible by Rm, the result
+is rounded toward zero.
+UDIV and SDIV do not change the flags (the
+suffix ‘S’ can not be added).
+
+AND <Rd>, <Rn>, op2 ;Rn AND op2
+BIC <Rd>, <Rn>, op2 ;Rn AND NOT op2
+ORR <Rd>, <Rn>, op2 ;Rn OR op2
+EOR <Rd>, <Rn>, op2 ;Rn XOR op2
+ORN <Rd>, <Rn>, op2 ;Rn OR NOT op2
+MVN <Rd>, <Rn> ; NOT Rn
+
+
+MLA <Rd>, <Rn>, <Rm>, <Ra>
+Rd = Rn * Rm + Ra
+MLS <Rd>, <Rn>, <Rm>, <Ra>
+Rd = Rn * Rm – Ra
+UMLAL <RLo>, <RHi>, <Rn>, <Rm>
+RHi,RLo = Rn * Rm + RHi,RLo
+SMLAL <RLo>, <RHi>, <Rn>, <Rm>
+same as UMLAL, but with signed values.
+=======================================================
+Execute Step
+ The instruction is executed as soon as all the
+required operands are available.
+ This avoids any RAW hazard.
+ Operands are possibly taken from the CDB as
+soon as another instruction produces them.
+ The length of this step varies depending on the
+instruction type (e.g., 2 for load instructions, 1
+for integer instructions, different values for FP
+instructions).
+
+Write Result Step
+ As soon as it is available, the result is put on
+the CDB (together with the tag identifying the
+instruction) and sent to the ReOrder Buffer.
+ Any reservation station waiting for the result
+reads it.
+ The reservation station entry is marked as
+available
+
+Commit (or Completion) Step
+ The reorder buffer is ordered according to instructions original
+order.
+ As soon as one instruction reached the head of the buffer
+ if it is a mispredicted branch, the buffer is flushed, and the
+execution is restarted with the correct successor of the
+instruction
+ otherwise, the result is written in the register or in memory
+(in case of a store)
+ in both cases, the reorder buffer entry is marked as free
+The reorder buffer is implemented as a circular buffer
+
+Store instructions
+ They write to memory when they commit, only.
+ Therefore, their input operand is required when
+they commit, rather than in the Write Result
+stage.
+ This means that the ROB should have a further
+field, specifying where the input operand for
+each store instruction should come from
+====================================================
+
+Exceptions are not executed as soon they are raised, but they are stored in reorder buffer.
+When the instruction is committed, the possible exception is executed, and the following instructions flushed from the buffer.
+Speculating expensive events 
+ When a time-expensive event (e.g., secondlevel cache miss, TLB miss) occurs
+speculatively, some processors wait for its execution until the event is no more speculative.
+ On the other side, low-cost events (e.g., firstlevel cache miss) are normally executed speculatively.
+=====================================================
+BL and BLX save the return address (i.e., the address of the next instruction) in LR (r14) and they are used to call subroutines.
+
+BX requires that least significant bit of register is 1, otherwise it raises a usage fault exception.
+LDR sets the least significant bit to 1 if the label precedes an instruction.
+ bit is not changed if the label precedes a directive.
+ ADR , ADR.W and ADRL do not change last bit.
+range of relative address is ±2^11 byte = ±2 KB
+
+B.W generates a Thumb-2 instruction, with 24
+bits reserved to the immediate value.
+ range of relative address is ±224 byte = ±16 MB
+
+BX can jump to any 32-bit value = 4 GB
+=========================================================
+BEQ Z = 1 equal
+BMI N = 1 negative
+BVS V = 1 overflow
+BHI C =1 & Z = 0 unsigned >
+BGE N ≥ V signed ≥
+BGT Z =0 or N = V signed >
+BPL N = 0 positive or 0
+BVC V = 0 no overflow
+BNE Z = 0 not equal
+
+BCS
+BHS C = 1 unsigned ≥
+BCC
+BLO C = 0 unsigned <
+
+BLS C =0 & Z = 1 unsigned ≤
+BLT N ≠ V signed <
+BLE Z =1 or N ≠ V signed ≤
+
+Compare and branch if Zero:
+CBZ <Rn>, <label>
+jumps to label if Rn = 0
+Compare and branch if Nonzero:
+CBNZ <Rn>, <label>
+Rn must be among r0-r7.
+Only forward branch is possible (4-130 byte)
+==========================================================
+Stack type Push operation Pop operation
+Full descending
+STMDB
+STMFD
+----
+LDM
+LDMIA
+LDMFD
+----
+Empty ascending
+STM
+STMIA
+STMEA
+----
+LDMDB
+LDMEA
+----
