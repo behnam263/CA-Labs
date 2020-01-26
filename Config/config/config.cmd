@@ -1,0 +1,1 @@
+python ./projectConfig.py
