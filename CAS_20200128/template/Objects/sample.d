@@ -8,3 +8,4 @@
 .\objects\sample.o: C:\Users\Behi\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h
 .\objects\sample.o: C:\Users\Behi\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Include\mpu_armv7.h
 .\objects\sample.o: C:\Users\Behi\AppData\Local\Arm\Packs\Keil\LPC1700_DFP\2.6.0\Device\Include\system_LPC17xx.h
+.\objects\sample.o: led/led.h

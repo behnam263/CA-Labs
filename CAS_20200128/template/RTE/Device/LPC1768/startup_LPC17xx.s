@@ -135,7 +135,8 @@ temp5 rn r9
 temp6 rn r10
 Reset_Handler   PROC
                 EXPORT  Reset_Handler             [WEAK]
-                
+                export radical
+				export coprime2
 				; item 1
 				MOV r0, #27
 				;MOV r0, #7
@@ -147,12 +148,12 @@ Reset_Handler   PROC
 				BL coprime2
 				
 				; remove comments to solve item 3
-				;IMPORT  SystemInit
-                ;IMPORT  __main
-                ;LDR     R0, =SystemInit
-                ;BLX     R0
-                ;LDR     R0, =__main
-                ;BX      R0
+				IMPORT  SystemInit
+                IMPORT  __main
+                LDR     R0, =SystemInit
+                BLX     R0
+                LDR     R0, =__main
+                BX      R0
 stop			B stop
                 ENDP
 
@@ -177,7 +178,7 @@ areequal
 notmjulti
 notequal	
 		cmp index,inouput  ; r4,r0
-		bne loop1
+		ble loop1
 		cmp temp1,#1
 		muleq radic,inouput
 		mov inouput,radic
