@@ -137,14 +137,14 @@ Reset_Handler   PROC
                 EXPORT  Reset_Handler             [WEAK]
                 
 				; item 1
-				MOV r0, #24408
+				MOV r0, #27
 				;MOV r0, #7
 				BL radical
 				
 				; remove comments to solve item 2
-				MOV r0, #27
-				MOV r1, #5
-				BL coprime
+				MOV r0, #24
+				MOV r1, #17
+				BL coprime2
 				
 				; remove comments to solve item 3
 				;IMPORT  SystemInit
@@ -197,23 +197,23 @@ coprime proc
 	
 	
 	cmp temp1,temp2
-	udiveq temp3,temp1,temp2
-	udiveq temp4,temp2,temp1
+	udivgt temp3,temp1,temp2
+	udivle temp3,temp2,temp1
 	
 	mul temp5,temp3,temp2
-	mul temp6,temp4,temp2
+	;mul temp6,temp2,temp2
+	 
 	
+	;cmp temp5,temp1
+	;beq notcoprim
 	
-	cmp temp5,temp1
-	beq notcoprim
+	;cmp temp6,temp2
+	;beq notcoprim
 	
-	cmp temp6,temp2
-	beq notcoprim
-	
-	cmp temp1,#1
-	bne notcoprim
-	cmp temp2,#1
-	bne notcoprim
+	cmp temp3,#1
+	bgt notcoprim
+	cmp temp4,#1
+	bgt notcoprim
 	
 ;	tst inouput,#1
 ;	tstne inouput2,#1
@@ -224,7 +224,7 @@ coprime proc
 ;	tstne inouput2,#1
 ;	; so both are even
 ;	beq notcoprim
-
+				b iscoprim
 
 notcoprim		mov inouput,#0
 		b endcoprim
@@ -232,7 +232,52 @@ iscoprim		mov inouput,#1
 endcoprim
 	pop {r4-r12,pc}
 	endp
-		
+
+coprime2 proc
+	push {r4-r12,lr}
+	
+;	if (u is even AND v is even) 
+;		return 0;
+		TST   r0, #1
+	    bne bothnoteven
+		tst  r1, #1
+		bne bothnoteven
+		mov r0,#1
+		b u_isodd
+bothnoteven		
+
+loop_ueven
+			TST   r0, #1
+	        bne loop_vdevide
+			lsr r0,#1		;u	
+			b loop_ueven
+	
+
+loop_vdevide
+			TST   r1, #1
+	        bne v_isodd
+			lsr r1,#1		;v 			
+			b loop_vdevide
+v_isodd			
+			cmp r0,r1
+			ITTTE gt
+			eorgt r0,r0,r1
+			eorgt r1,r1,r0
+			eorgt r0,r0,r1
+			suble r1,r1,r0
+			cmp r1,#0
+			bne loop_vdevide	
+			
+			
+u_isodd
+			cmp r0,#1
+			ITE eq
+			moveq r0,#1
+			movne r0,#0
+
+	pop  {r4-r12,pc}
+		endp
+
 ; Dummy Exception Handlers (infinite loops which can be modified)
 
 NMI_Handler     PROC
