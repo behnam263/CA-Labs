@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include "LPC17xx.h"                    /* LPC17xx definitions                */
 extern int radical (unsigned int input);
-extern int coprime2 (unsigned int a,unsigned int b);
+extern int coprime (unsigned int a,unsigned int b);
 unsigned int  a;
 unsigned int  b;
 unsigned int  c;
@@ -29,15 +29,16 @@ int main (void)
 	LED_init();					/* LED Initialization */
 	unsigned int admiss=0;
 	unsigned int exceptionsnum=0;
-	a=1;
+	a=576;
 	b=1;
 	for( b=1;b<100;b++){
 		c=a+b;
-	if(	coprime2(a,b)==1 && coprime2(a,c)==1
-		&&	coprime2(b,c)==1)
+	if(	coprime(a,b)==1 )
+		if(coprime(a,c)==1)
+			if(	coprime(b,c)==1)
 			{
 				admiss++;
-				if((a+b)>radical(a*b*(a+b)))
+				if(c>radical(a*b*c))
 				exceptionsnum++;
 			}
 	}

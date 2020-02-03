@@ -135,7 +135,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGDARM</Key>
-          <Name>(1010=-1,-1,-1,-1,0)(1007=-1,-1,-1,-1,0)(1008=-1,-1,-1,-1,0)(1009=-1,-1,-1,-1,0)(1012=-1,-1,-1,-1,0)(350=-1,-1,-1,-1,0)(250=-1,-1,-1,-1,0)(270=-1,-1,-1,-1,0)(313=-1,-1,-1,-1,0)(291=-1,-1,-1,-1,0)(302=-1,-1,-1,-1,0)(110=-1,-1,-1,-1,0)(113=-1,-1,-1,-1,0)(320=-1,-1,-1,-1,0)(210=-1,-1,-1,-1,0)(330=-1,-1,-1,-1,0)(332=-1,-1,-1,-1,0)(333=-1,-1,-1,-1,0)(334=611,433,1209,638,1)(335=-1,-1,-1,-1,0)(336=-1,-1,-1,-1,0)(345=-1,-1,-1,-1,0)(346=-1,-1,-1,-1,0)(381=-1,-1,-1,-1,0)(382=-1,-1,-1,-1,0)(383=-1,-1,-1,-1,0)(384=-1,-1,-1,-1,0)(197=-1,-1,-1,-1,0)(198=-1,-1,-1,-1,0)(191=-1,-1,-1,-1,0)(192=-1,-1,-1,-1,0)(199=-1,-1,-1,-1,0)(180=-1,-1,-1,-1,0)(261=-1,-1,-1,-1,0)(262=-1,-1,-1,-1,0)(231=-1,-1,-1,-1,0)(232=-1,-1,-1,-1,0)(233=-1,-1,-1,-1,0)(121=-1,-1,-1,-1,0)(122=-1,-1,-1,-1,0)(123=-1,-1,-1,-1,0)(124=-1,-1,-1,-1,0)(170=-1,-1,-1,-1,0)(142=-1,-1,-1,-1,0)(150=-1,-1,-1,-1,0)(400=-1,-1,-1,-1,0)(370=-1,-1,-1,-1,0)(160=-1,-1,-1,-1,0)(280=-1,-1,-1,-1,0)(240=456,332,823,529,0)</Name>
+          <Name>(1010=-1,-1,-1,-1,0)(1007=-1,-1,-1,-1,0)(1008=-1,-1,-1,-1,0)(1009=-1,-1,-1,-1,0)(1012=-1,-1,-1,-1,0)(350=-1,-1,-1,-1,0)(250=-1,-1,-1,-1,0)(270=-1,-1,-1,-1,0)(313=-1,-1,-1,-1,0)(291=-1,-1,-1,-1,0)(302=-1,-1,-1,-1,0)(110=-1,-1,-1,-1,0)(113=-1,-1,-1,-1,0)(320=-1,-1,-1,-1,0)(210=-1,-1,-1,-1,0)(330=-1,-1,-1,-1,0)(332=-1,-1,-1,-1,0)(333=-1,-1,-1,-1,0)(334=656,265,1254,470,1)(335=-1,-1,-1,-1,0)(336=-1,-1,-1,-1,0)(345=-1,-1,-1,-1,0)(346=-1,-1,-1,-1,0)(381=-1,-1,-1,-1,0)(382=-1,-1,-1,-1,0)(383=-1,-1,-1,-1,0)(384=-1,-1,-1,-1,0)(197=-1,-1,-1,-1,0)(198=-1,-1,-1,-1,0)(191=-1,-1,-1,-1,0)(192=-1,-1,-1,-1,0)(199=-1,-1,-1,-1,0)(180=-1,-1,-1,-1,0)(261=-1,-1,-1,-1,0)(262=-1,-1,-1,-1,0)(231=-1,-1,-1,-1,0)(232=-1,-1,-1,-1,0)(233=-1,-1,-1,-1,0)(121=-1,-1,-1,-1,0)(122=-1,-1,-1,-1,0)(123=-1,-1,-1,-1,0)(124=-1,-1,-1,-1,0)(170=-1,-1,-1,-1,0)(142=-1,-1,-1,-1,0)(150=-1,-1,-1,-1,0)(400=-1,-1,-1,-1,0)(370=-1,-1,-1,-1,0)(160=-1,-1,-1,-1,0)(280=-1,-1,-1,-1,0)(240=456,332,823,529,0)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -152,247 +152,87 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>232</LineNumber>
+          <LineNumber>46</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>506</Address>
+          <Address>1414</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>RTE\Device\LPC1768\startup_LPC17xx.s</Filename>
+          <Filename>.\sample.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\lab12ex1\RTE/Device/LPC1768/startup_LPC17xx.s\232</Expression>
+          <Expression>\\lab12ex1\sample.c\46</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>230</LineNumber>
+          <LineNumber>46</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>500</Address>
+          <Address>1500</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>RTE\Device\LPC1768\startup_LPC17xx.s</Filename>
+          <Filename>.\sample.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\lab12ex1\RTE/Device/LPC1768/startup_LPC17xx.s\230</Expression>
+          <Expression>\\lab12ex1\sample.c\46</Expression>
         </Bp>
         <Bp>
           <Number>2</Number>
           <Type>0</Type>
-          <LineNumber>214</LineNumber>
+          <LineNumber>188</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>488</Address>
+          <Address>0</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
+          <BreakIfRCount>0</BreakIfRCount>
           <Filename>RTE\Device\LPC1768\startup_LPC17xx.s</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\lab12ex1\RTE/Device/LPC1768/startup_LPC17xx.s\214</Expression>
+          <Expression></Expression>
         </Bp>
         <Bp>
           <Number>3</Number>
           <Type>0</Type>
-          <LineNumber>200</LineNumber>
+          <LineNumber>209</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>472</Address>
+          <Address>0</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
+          <BreakIfRCount>0</BreakIfRCount>
           <Filename>RTE\Device\LPC1768\startup_LPC17xx.s</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\lab12ex1\RTE/Device/LPC1768/startup_LPC17xx.s\200</Expression>
+          <Expression></Expression>
         </Bp>
         <Bp>
           <Number>4</Number>
           <Type>0</Type>
-          <LineNumber>231</LineNumber>
+          <LineNumber>225</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>504</Address>
+          <Address>0</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
+          <BreakIfRCount>0</BreakIfRCount>
           <Filename>RTE\Device\LPC1768\startup_LPC17xx.s</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\lab12ex1\RTE/Device/LPC1768/startup_LPC17xx.s\231</Expression>
+          <Expression></Expression>
         </Bp>
         <Bp>
           <Number>5</Number>
           <Type>0</Type>
-          <LineNumber>45</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>1422</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\sample.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\lab12ex1\sample.c\45</Expression>
-        </Bp>
-        <Bp>
-          <Number>6</Number>
-          <Type>0</Type>
-          <LineNumber>279</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>584</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>RTE\Device\LPC1768\startup_LPC17xx.s</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\lab12ex1\RTE/Device/LPC1768/startup_LPC17xx.s\279</Expression>
-        </Bp>
-        <Bp>
-          <Number>7</Number>
-          <Type>0</Type>
-          <LineNumber>185</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>450</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>RTE\Device\LPC1768\startup_LPC17xx.s</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\lab12ex1\RTE/Device/LPC1768/startup_LPC17xx.s\185</Expression>
-        </Bp>
-        <Bp>
-          <Number>8</Number>
-          <Type>0</Type>
-          <LineNumber>170</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>418</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>RTE\Device\LPC1768\startup_LPC17xx.s</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\lab12ex1\RTE/Device/LPC1768/startup_LPC17xx.s\170</Expression>
-        </Bp>
-        <Bp>
-          <Number>9</Number>
-          <Type>0</Type>
-          <LineNumber>40</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>1360</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\sample.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\lab12ex1\sample.c\40</Expression>
-        </Bp>
-        <Bp>
-          <Number>10</Number>
-          <Type>0</Type>
-          <LineNumber>199</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>0</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>RTE\Device\LPC1768\startup_LPC17xx.s</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>11</Number>
-          <Type>0</Type>
-          <LineNumber>213</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>0</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>RTE\Device\LPC1768\startup_LPC17xx.s</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>12</Number>
-          <Type>0</Type>
-          <LineNumber>229</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>0</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>RTE\Device\LPC1768\startup_LPC17xx.s</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>13</Number>
-          <Type>0</Type>
-          <LineNumber>257</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>0</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>RTE\Device\LPC1768\startup_LPC17xx.s</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>14</Number>
-          <Type>0</Type>
-          <LineNumber>273</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>0</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>RTE\Device\LPC1768\startup_LPC17xx.s</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>15</Number>
-          <Type>0</Type>
-          <LineNumber>73</LineNumber>
+          <LineNumber>47</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>0</Address>
           <ByteObject>0</ByteObject>
